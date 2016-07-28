@@ -1,6 +1,6 @@
 library("ggplot2")
 
-x <- seq(-6, 6, length.out = 501)
+x <- seq(-3, 3, length.out = 501)
 
 sigmoid <- function(x){
   y = exp(-x)
@@ -18,8 +18,8 @@ relu <- function(x){
 zz <- merge(zz,relu(x), by="point")
 
 #sigmoid plot
-a <- ggplot(zz)+geom_point(aes(x=zz$sigmoid, y=zz$point), color="sigmoid")
+a <- ggplot(zz)+geom_point(aes(y=zz$sigmoid, x=zz$point), color="red")
 
 #relu plot
-a <- ggplot(zz, aes(x=zz$sigmoid, y=zz$point))+geom_point()
+a <- a+geom_point(aes(y=zz$relu, x=zz$point), color="blue")
 a
