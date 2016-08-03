@@ -43,3 +43,10 @@ zz <- merge(zz,sigmoid2(x), by="point")
 #sigmoid2 plot
 a <- a+ geom_point(aes(y=zz$sigmoid2, x=zz$point), color="cyan")
 a
+
+#exponential decay plot
+dates <- c(1:365)
+decay <- -.007
+decayed_value <- exp(dates*decay)
+data_frame = data.frame(x=dates, y=decayed_value)
+ggplot(data_frame, aes(x=x, y=y))+scale_y_continuous(breaks = seq(0,1, by=0.05))+geom_point()
